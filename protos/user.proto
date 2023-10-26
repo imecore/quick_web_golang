@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package quick_web;
+
+option java_package = "com.quick_web.proto";
+
+import "google/api/annotations.proto";
+import "common.proto";
+
+message User {
+  uint64 id = 1;
+  string username = 2;
+  string lang = 3;
+}
+
+service UserService {
+  rpc Login (LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+      post: "/login"
+      body: "*"
+    };
+  };
+  rpc Logout (LogoutRequest) returns (LogoutResponse) {
+    option (google.api.http) = {
+      post: "/logout"
+      body: "*"
+    };
+  };
+  rpc Get (GetRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      post: "/user"
+      body: "*"
+    };
+    option (auth) = true;
+  };
+}
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+
+}
+message LogoutRequest {
+
+}
+message LogoutResponse {
+
+}
+message GetRequest {
+
+}
+message GetResponse {
+  User user = 1;
+}

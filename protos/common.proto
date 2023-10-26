@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package quick_web;
+
+option java_package = "com.quick_web.proto";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MethodOptions {
+  bool auth = 654321;
+}
